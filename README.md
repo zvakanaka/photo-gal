@@ -23,7 +23,7 @@ Then run `sng` from the parent directory.
 ## Server
 ```sh
 sudo apt-get install php5 apache2 mysql-client mysql-server php5-mysql php5-mysqlnd
-
+```
 ---
 ## Dependencies
 Photo-Gal requires `webp`, `rsync`, `zip` and `gphoto2` be installed on the server.
@@ -32,6 +32,9 @@ Photo-Gal requires `webp`, `rsync`, `zip` and `gphoto2` be installed on the serv
 ## Database
 Run the setup and create scripts from MySQL:
 `source model/setup.sql` and `source model/photo-gal.sql`
+
+## Config
+`config.php`
 
 ## Photos
 Place photos in a sibling directory of the project named `photo` (can be symbolic link).
