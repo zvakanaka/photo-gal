@@ -1,13 +1,5 @@
 <?php include $_SERVER['DOCUMENT_ROOT'].$project_dir.'/views/parts/head.php'; ?>
 <main>
-  <div class="singularity">
-    <p class="message">
-      ATTENTION: DO NOT SUBMIT ANY OF THESE FORMS NO MATTER WHO YOU ARE.
-    </p>
-    <p>
-      They are not for testing purposes, they are for adding batches of photos from a DSLR plugged into the server, and for adding thumbnails and web-optimized previews. All of this has been done already and repeating may be destructive.
-    </p>
-</div>
 <h1>Server Management</h1>
   <h2>Download from DSLR</h2>
   <form action="." method="post" id="download_form">

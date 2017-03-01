@@ -1,10 +1,6 @@
 <?php
-    $dsn = 'mysql:host=localhost;dbname=photo_db';
-    $username = 'photo';
-    $password = 'ndokuda';
-
     try {
-        $db = new PDO($dsn, $username, $password);
+        $db = new PDO($db_dsn, $db_username, $db_password);
         unset($username);
         unset($password);
     } catch (PDOException $e) {
