@@ -1,5 +1,4 @@
--- hey, wanna know my password
-CREATE USER 'photo'@'localhost' IDENTIFIED BY 'ndokuda';
+CREATE USER 'photo'@'localhost' IDENTIFIED BY 'PASSWORD_HERE';
 CREATE DATABASE photo_db;
 -- allow some CRUD to happen
 GRANT SELECT, DELETE, INSERT, UPDATE ON photo_db.* TO 'photo'@'localhost';
