@@ -1,13 +1,11 @@
 <?php
+require('lib/load_config.php');
 require('model/database.php');
 require('model/photo_db.php');
 require('model/user_db.php');
 require('model/photo_fs.php');
 require('lib/exec.php');
 require('lib/string_tools.php');
-$config = include('./config.php');
-$photo_dir = $config->photo_dir;
-$project_dir = $config->project_dir;
 
 session_start();
 
