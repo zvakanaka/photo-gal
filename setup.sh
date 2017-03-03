@@ -21,9 +21,9 @@ if [ ! -f config.php ]; then
     echo "This is not a Debian based OS, please configure dependencies manually"
   else
     echo "Make sure these are installed:"
-    echo -e '\n\t sudo apt install mysql-common php-common php-mysql webp gphoto2 rsync zip\n'
+    echo -e '\n\t sudo apt install mysql-common mysql-server php-common php-mysql webp gphoto2 rsync zip\n'
     echo "If you are using apache, install these too:"
-    echo -e '\n\t sudo apt install libapache2-mod-php\n'
+    echo -e '\n\t sudo apt install apache2 libapache2-mod-php\n'
   fi
 
   if [ $(mysql --version&>/dev/null) ]; then
@@ -40,7 +40,7 @@ if [ ! -f config.php ]; then
   fi
   echo -e "<?php
 return (object) array(
-  'photo_dir' => $photo_dir,
+  'photo_dir' => '$photo_dir',
   'project_dir' => '/$project_dir',
   'db_username' => 'photo',
   'db_password' => '$db_password',
@@ -57,12 +57,12 @@ return (object) array(
   echo -n "Would you like to create a database and db user? [y/N]: "
   read create_db_and_user
   if [[ $create_db_and_user =~ [yY](es)* ]]; then
-    mysql -u photo -p$db_password -e "source model/setup.sql"
+    mysql -u root -p -e "source model/setup.sql"
   fi
   echo -n "Would you like to (re)create the photo db? [y/N]: "
   read recreate_db
   if [[ $recreate_db =~ [yY](es)* ]]; then
-    mysql -u photo -p$db_password -e "source model/photo-gal.sql"
+    mysql -u root -p -e "source model/photo-gal.sql"
   fi
 
   if [ ! -d $photo_dir ]; then
