@@ -2,6 +2,7 @@
 Photo management and gallery made of Vanilla JS, Bash scripts, and PHP
 
 # Setup
+`$ bash setup.sh`
 ---
 ## Local
 [Sng](https://www.npmjs.com/package/sng) can be used to serve PHP from somewhere in your home folder. Nginx, PHP,  and MySQL are required. Sng requires npm, the neatest way to install that is with [nvm](nvm.sh) (Node Version Manager).
@@ -19,22 +20,6 @@ location ~ \.php$ {
 ```
 
 Then run `sng` from the parent directory.
-# OR
-## Server
-```sh
-sudo apt-get install php5 apache2 mysql-client mysql-server php5-mysql php5-mysqlnd
-```
----
-## Dependencies
-Photo-Gal requires `webp`, `rsync`, `zip` and `gphoto2` be installed on the server.
-*Some versions of Linux may requre executing* `chmod +s $(which gphoto2)` *in order to allow use by the www-data user*
-
-## Database
-Run the setup and create scripts from MySQL:
-`source model/setup.sql` and `source model/photo-gal.sql`
-
-## Config
-`config.php`
 
 ## Photos
 Place photos in a sibling directory of the project named `photo` (can be symbolic link).
