@@ -2,9 +2,13 @@ if [ -z $1 ]; then
   echo "ERROR: Must supply dirname"
   exit 1;
 fi
-photo_dir='../../photo'
-echo $(date) Creating thumbs for $1 from $2 >> log.txt
-
+if [ -z $2 ]; then
+  photo_dir='../photo'
+else
+  photo_dir=$2
+fi
+echo $(date) Creating thumbs for $1 from $3 >> log.txt
+pwd
 cd $photo_dir/$1
 if [ $? -eq 0 ]; then
   if [ ! -d .thumb ]; then

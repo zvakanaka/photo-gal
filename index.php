@@ -179,7 +179,7 @@ if ($action == 'register') {
     include('views/dslr.php');
     die();
   } else {
-    $cmd = 'bash scripts/download_from_dslr.sh '.escapeshellarg($new_album);
+    $cmd = 'bash scripts/download_from_dslr.sh '.escapeshellarg($new_album).' '.escapeshellarg($photo_dir);
     shell_async($cmd);
   }
   $albums = get_albums($photo_dir, array());
@@ -204,13 +204,13 @@ if ($action == 'register') {
     die();
   } else {
     if ($optimization_type == 'thumbs') {
-      $cmd = 'bash scripts/create_thumbs.sh '.escapeshellarg($album_name).' '.escapeshellarg($_SERVER['REMOTE_ADDR']);
+      $cmd = 'bash scripts/create_thumbs.sh '.escapeshellarg($album_name).' '.escapeshellarg($photo_dir).' '.escapeshellarg($_SERVER['REMOTE_ADDR']);
       shell_async($cmd);
     } else if ($optimization_type == 'webs') {
-      $cmd = 'bash scripts/create_webs.sh '.escapeshellarg($album_name).' '.escapeshellarg($_SERVER['REMOTE_ADDR']);
+      $cmd = 'bash scripts/create_webs.sh '.escapeshellarg($album_name).' '.escapeshellarg($photo_dir).' '.escapeshellarg($_SERVER['REMOTE_ADDR']);
       shell_async($cmd);
     } else if ($optimization_type == 'delete_originals') {
-      $cmd = 'bash scripts/delete_originals.sh '.escapeshellarg($album_name).' '.escapeshellarg($_SERVER['REMOTE_ADDR']);
+      $cmd = 'bash scripts/delete_originals.sh '.escapeshellarg($album_name).' '.escapeshellarg($photo_dir).' '.escapeshellarg($_SERVER['REMOTE_ADDR']);
       shell_async($cmd);
     } else {
       $error = "No optimization type specified. Check all fields and try again.";
@@ -241,7 +241,7 @@ if ($action == 'register') {
     include('views/dslr.php');
     die();
   } else {
-    $cmd = 'bash scripts/upload_to_server.sh '.escapeshellarg($album_name).' '.escapeshellarg($server_name).' '.escapeshellarg($username).' '.escapeshellarg($port);
+    $cmd = 'bash scripts/upload_to_server.sh '.escapeshellarg($album_name).' '.escapeshellarg($server_name).' '.escapeshellarg($username).' '.escapeshellarg($port).' '.escapeshellarg($photo_dir);
     shell_async($cmd);
     $message = "Breathe in. Breathe out. Repeat until ".$album_name." is uploaded to ".$server_name.".";
     include('views/dslr.php');
@@ -264,7 +264,7 @@ if ($action == 'register') {
     include('views/dslr.php');
     die();
   } else {
-    $cmd = 'bash scripts/create_album_thumb.sh '.escapeshellarg($album_name).' '.escapeshellarg($photo_name).' '.escapeshellarg($_SERVER['REMOTE_ADDR']);
+    $cmd = 'bash scripts/create_album_thumb.sh '.escapeshellarg($album_name).' '.escapeshellarg($photo_name).' '.escapeshellarg($photo_dir).' '.escapeshellarg($_SERVER['REMOTE_ADDR']);
     shell_async($cmd);
     $message = "Album thumb ".$album_name."/".$photo_name." created.";
     include('views/dslr.php');
@@ -311,7 +311,7 @@ if ($action == 'register') {
     echo "Error: Could not delete $album_name/$photo_name, missing information.";
     header("Refresh:2; url=.?action=album&album=$album_name", true, 303);
   } else {
-    $cmd = 'bash scripts/delete_photo.sh '.escapeshellarg($album_name).' '.escapeshellarg($photo_name).' '.escapeshellarg($_SERVER['REMOTE_ADDR']);
+    $cmd = 'bash scripts/delete_photo.sh '.escapeshellarg($album_name).' '.escapeshellarg($photo_name).' '.escapeshellarg($photo_dir).' '.escapeshellarg($_SERVER['REMOTE_ADDR']);
     shell_async($cmd);
     echo $album_name."/".$photo_name." deleted.";
     if ($next_photo == NULL || $next_photo == FALSE) {
