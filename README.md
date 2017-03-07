@@ -19,7 +19,7 @@ location ~ \.php$ {
 }
 ```
 
-Then run `sng` from the parent directory.
+Then run `sng` from that parent directory.
 
 ## Photos
 Place photos in a sibling directory of the project named `photo` (can be symbolic link).
