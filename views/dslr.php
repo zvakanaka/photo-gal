@@ -44,15 +44,15 @@
         <input type="hidden" name="action" value="upload_to_server">
 
         <label>Server Name (IP address or Domain Name):</label>
-        <input type="text" name="server_name"<?php if(isset($server_name)) echo " value='$server_name'";?>/>
+        <input type="text" id="server_name" name="server_name"<?php if(isset($server_name)) echo " value='$server_name'";?>/>
         <br>
 
         <label>User Name (On server):</label>
-        <input type="text" name="username"<?php if(isset($username)) echo " value='$username'";?>/>
+        <input type="text" id="username" name="username"<?php if(isset($username)) echo " value='$username'";?>/>
         <br>
 
        <label>Port:</label>
-        <input type="number" name="port"<?php if(isset($port)) echo " value='$port'";?>/>
+        <input type="number" id="port" name="port"<?php if(isset($port)) echo " value='$port'";?>/>
         <br>
 
         <label>Album:</label>
@@ -67,8 +67,10 @@
         <br>
 
         <label>&nbsp;</label>
+        <input class="save_button" type="button" value="Save" />
         <input type="submit" value="Upload to Server" />
         <br>
     </form>
 </main>
+<script src="js/dslr.js"></script>
 <?php include $_SERVER['DOCUMENT_ROOT'].$project_dir.'/views/parts/toes.php'; ?>
