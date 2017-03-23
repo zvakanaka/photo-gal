@@ -1,3 +1,4 @@
+# $1 album_name, $2 photo_name, $3 photo_dir
 if [ -z $1 ]; then
   echo "ERROR: Must supply dirname"
   exit 1;
