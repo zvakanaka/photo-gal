@@ -15,5 +15,5 @@ if [ ! -f $photo_dir/$1/$2 ]; then
   echo "$photo_dir/$1/$2 does not exist"
   exit 1
 fi
-echo $(date) Deleteing $photo_dir/$1/$2 from $4 >> log.txt
+echo $(date) Deleteing $photo_dir/$1/$2 from $4 >> scripts/log.txt
 rm $photo_dir/$1/$2 $photo_dir/$1/{.thumb,.web}/${2%.*}.* $photo_dir/$1/${2%.*}.NEF

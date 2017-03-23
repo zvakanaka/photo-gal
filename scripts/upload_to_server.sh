@@ -28,6 +28,6 @@ if [ ! -z $6 ]; then
   remote_path=$6
 fi
 
-echo $(date) Uploading $1 to $3@$2 >> log.txt
+echo $(date) Uploading $1 to $3@$2 >> scripts/log.txt
 #options="--chown=www-data:www-data"
 rsync -av -e "ssh -p $port" $options --exclude 'raw' --exclude '*.MOV' $photo_dir/$1 $3@$2:$remote_path/

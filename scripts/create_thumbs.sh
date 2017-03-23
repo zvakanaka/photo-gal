@@ -8,7 +8,7 @@ if [ -z $2 ]; then
 else
   photo_dir=$2
 fi
-echo $(date) Creating thumbs for $1 from $3 >> log.txt
+echo $(date) Creating thumbs for $1 from $3 >> scripts/log.txt
 pwd
 cd $photo_dir/$1
 if [ $? -eq 0 ]; then
@@ -21,6 +21,6 @@ if [ $? -eq 0 ]; then
       cwebp $f -resize 0 120 -q 50 -short -o .thumb/${f%.*}.webp;
     done
   else
-    echo $(date) Failure creating thumbs: user: $(echo $USER) >> log.txt
+    echo $(date) Failure creating thumbs: user: $(echo $USER) >> scripts/log.txt
   fi
 fi
