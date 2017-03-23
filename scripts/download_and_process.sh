@@ -19,6 +19,6 @@ echo $(date) Downloading from DSLR to $1 >> scripts/log.txt
 
 mkdir $photo_dir/$1 && cd $photo_dir/$1;
 gphoto2 --get-all-files
-
+cd -
 bash scripts/create_thumbs.sh $1 $photo_dir
 bash scripts/create_webs.sh $1 $photo_dir
