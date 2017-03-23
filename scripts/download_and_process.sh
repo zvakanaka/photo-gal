@@ -15,7 +15,7 @@ if [ -d $photo_dir/$1 ]; then
     exit 1;
   fi
 fi
-echo $(date) Downloading from DSLR to $1 >> log.txt
+echo $(date) Downloading from DSLR to $1 >> scripts/log.txt
 
 mkdir $photo_dir/$1 && cd $photo_dir/$1;
 gphoto2 --get-all-files
