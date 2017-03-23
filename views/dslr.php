@@ -3,7 +3,8 @@
 <h1>Server Management</h1>
   <h2>Download from DSLR</h2>
   <form action="." method="post" id="download_form">
-      <input type="hidden" name="action" value="download_from_dslr">
+      <label><input type="radio" name="action" value="download_from_dslr">Download Only</label><br>
+      <label><input type="radio" name="action" value="download_and_process">Download and Create Thumbs and Lightbox-sized Images</label><br>
 
       <label>New Album Name (a directory name):</label>
       <input type="text" name="new_album"<?php if(isset($new_album)) echo " value='$new_album'";?>/>
@@ -19,9 +20,9 @@
 
           <label>Optimization:</label>
           <br>
-          <input type="radio" name="optimization_type" value="thumbs">Thumbnails<br>
-          <input type="radio" name="optimization_type" value="webs">Webs<br>
-          <input type="radio" name="optimization_type" value="delete_originals">Delete Originals<br>
+          <label><input type="radio" name="optimization_type" value="thumbs">Thumbnails</label><br>
+          <label><input type="radio" name="optimization_type" value="webs">Webs</label><br>
+          <label><input type="radio" name="optimization_type" value="delete_originals">Delete Originals</label><br>
 
           <label>Album:</label>
           <select name="album_name">

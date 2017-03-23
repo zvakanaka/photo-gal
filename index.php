@@ -186,6 +186,25 @@ if ($action == 'register') {
   $message = "Breathe in. Breathe out. Repeat until photos are downloaded to ".$new_album.".";
   include('views/dslr.php');
   die();
+} else if ($action == 'download_and_process') {
+  if (!isset($_SESSION["is_admin"])) {// authenticate
+    $error = "Sorry, only administrators can do these things.";
+    include('views/dslr.php');
+    die();
+  }
+  $new_album = filter_input(INPUT_POST, 'new_album', FILTER_SANITIZE_STRING);
+  if ($new_album == NULL || $new_album == FALSE) {
+    $error = "No album name specified. Check all fields and try again.";
+    include('views/dslr.php');
+    die();
+  } else {
+    $cmd = 'bash scripts/download_and_process.sh '.escapeshellarg($new_album).' '.escapeshellarg($photo_dir);
+    shell_async($cmd);
+  }
+  $albums = get_albums($photo_dir, array());
+  $message = "Breathe in. Breathe out. Repeat until photos are downloaded to ".$new_album.".";
+  include('views/dslr.php');
+  die();
 } else if ($action == 'optimize') {
   if (!isset($_SESSION["is_admin"])) {// authenticate
     $error = "Sorry, only administrators can do these things.";
