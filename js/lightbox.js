@@ -1,3 +1,4 @@
+const iOS = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
 const params = new URLSearchParams(location.search);
 var img = '';
 
@@ -10,8 +11,10 @@ function getAndShow(webUrl, thumbUrl, fullsizeUrl, album) {
   lightPic.setAttribute('src', webUrl);
 
   document.getElementById('lightbox-picture').setAttribute('onError', `this.onerror=null;this.src='${fullsizeUrl}';`);
-  params.set('photo', img);
-  window.history.replaceState({}, '', `${location.pathname}?${params}`);
+  if (!iOS) {
+    params.set('photo', img);
+    window.history.replaceState({}, '', `${location.pathname}?${params}`);
+  }
 
   document.getElementById('download-link').setAttribute('href', fullsizeUrl);
   document.getElementById('download-link').setAttribute('download', fullsizeUrl);
@@ -40,8 +43,10 @@ var lightboxClose = document.querySelector('#close-lightbox');
 lightboxClose.onclick = function clickLightboxClose () {
    document.getElementById('light').style.display='none';
    document.getElementById('fade').style.display='none';
-   params.delete('photo');
-   window.history.replaceState({}, '', `${location.pathname}?${params}`);
+   if (!iOS) {
+     params.delete('photo');
+     window.history.replaceState({}, '', `${location.pathname}?${params}`);
+   }
 }
 
 // Rotate and align
