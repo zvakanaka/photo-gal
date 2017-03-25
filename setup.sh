@@ -58,6 +58,7 @@ return (object) array(
   read create_db_and_user
   if [[ $create_db_and_user =~ [yY](es)* ]]; then
     mysql -u root -p -e "source model/setup.sql"
+    model/setup.sql
   fi
   echo -n "Would you like to (re)create the photo db? [y/N]: "
   read recreate_db
