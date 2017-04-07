@@ -5,7 +5,7 @@ Photo manager and gallery made of Vanilla JS, Bash scripts, and PHP
 ## Usage
 1. Plug DSLR into Raspberry-Pi (or any computer with this set up)
 2. Open web browser and go to the ip-address/photo-gal
-3. Log in to an [admin account](admin help page)
+3. Log into an admin account (after making a user an admin in the setup)
 4. Use the UI to download photos from DSLR (creates thumbs and lightbox-sized images too)
 5. Optionally upload galleries to a server
 
