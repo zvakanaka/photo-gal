@@ -1,13 +1,26 @@
 # photo-gal
-Photo management and gallery made of Vanilla JS, Bash scripts, and PHP
+Photo manager and gallery made of Vanilla JS, Bash scripts, and PHP
 
-# Setup
-`$ bash setup.sh`
+# DSLR 🔌 Raspberry-Pi 📡 Web-Server
+## Usage
+1. Plug DSLR into Raspberry-Pi (or any computer with this set up)
+2. Open web browser and go to the ip-address/photo-gal
+3. Log in to an [admin account](admin help page)
+4. Use the UI to download photos from DSLR (creates thumbs and lightbox-sized images too)
+5. Optionally upload galleries to a server
+
+## Setup
+```sh
+$ bash setup.sh
+```  
+
+[Further Setup](docs.md)
+
 ---
-## Local
+## Local Development
 [Sng](https://www.npmjs.com/package/sng) can be used to serve PHP from somewhere in your home folder. Nginx, PHP,  and MySQL are required. Sng requires npm, the neatest way to install that is with [nvm](nvm.sh) (Node Version Manager).
 
-Place a file named `.sng.conf` in the parent directory of the project. Place these contents in `.sng.conf`:  
+1. Place a file named `.sng.conf` in the parent directory of the project. Place these contents in `.sng.conf`:  
 ```
 # pass the PHP scripts to FastCGI server listening on the php-fpm socket
 location ~ \.php$ {
@@ -19,10 +32,10 @@ location ~ \.php$ {
 }
 ```
 
-Then run `sng` from that parent directory.
+2. Run `sng` from that parent directory.
 
-## Photos
-Place photos in a sibling directory of the project named `photo` (can be symbolic link).
-
-## Zips
-Make a directory named `zips` that is also a sibling directory to the project. Ensure `www-data` has rights to read and write contents.
+3. Upload albums without a password (mandatory for UI uploads)
+```sh
+$ ssh-keygen
+$ ssh-copy-id user@your_website.com -P 22
+```

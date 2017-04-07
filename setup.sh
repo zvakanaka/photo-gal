@@ -3,7 +3,7 @@ cat banner.txt
 echo
 
 if [ ! -f setup.sh ]; then
-  echo "Setup must be executed from within project directory"
+  echo "ERROR: Setup must be executed from within project directory"
   exit 1
 fi
 project_dir=$(basename $(pwd))
@@ -18,7 +18,7 @@ FLUSH PRIVILEGES;" > model/setup.sql
 
 if [ ! -f config.php ]; then
   if [ $(dpkg&>/dev/null) ]; then
-    echo "This is not a Debian based OS, please configure dependencies manually"
+    echo "WARNING: This does not seem to be a Debian based OS, please configure dependencies manually"
   else
     echo "Make sure these are installed:"
     echo -e '\n\t sudo apt install mysql-common mysql-server php-common php-mysql webp gphoto2 rsync zip\n'
@@ -57,13 +57,31 @@ return (object) array(
   echo -n "Would you like to create a database and db user? [y/N]: "
   read create_db_and_user
   if [[ $create_db_and_user =~ [yY](es)* ]]; then
+    echo "Executing command as MySQL root user"
     mysql -u root -p -e "source model/setup.sql"
     model/setup.sql
   fi
   echo -n "Would you like to (re)create the photo db? [y/N]: "
   read recreate_db
   if [[ $recreate_db =~ [yY](es)* ]]; then
+    echo "Executing command as MySQL root user"
     mysql -u root -p -e "source model/photo-gal.sql"
+  fi
+
+  if [[ $? -eq 0 ]]; then
+    echo "Successfully set up database."
+    echo "If you would like to do the next step, go create a normal user first (from a browser)"
+    HOSTNAME=$(hostname -I)
+    echo -n "\thttp://$HOSTNAME/photo-gal"
+  fi
+  echo
+  echo -n "Would you like to make a user an admin? [y/N]: "
+  read create_db_admin
+  if [[ $create_db_admin =~ [yY](es)* ]]; then
+    echo -n "Existing username that shall be made an admin? : "
+    read username
+    echo "Executing command as MySQL root user"
+    mysql -uroot -p -e "UPDATE users SET is_admin = 1 WHERE user_id = (SELECT user_d FROM users WHERE username = '$username');"
   fi
 
   if [ ! -d $photo_dir ]; then
@@ -74,9 +92,13 @@ return (object) array(
       mkdir $photo_dir
       if [ $? -ne 0 ]; then
         echo "Failed creating directory '$photo_dir', do you have sufficient rights?"
+      else
+        echo "Directory created in $photo_dir"
       fi
     fi
   fi
+  echo "Setup script complete!"
+  echo "Now read docs.md for further setup (Nginx, PHP, SSH)"
 else
   echo "It looks like you already created a configuration..."
   echo -n "Would you like to reset the settings? [y/N]: "
