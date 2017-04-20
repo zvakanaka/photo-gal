@@ -19,6 +19,7 @@ if [ $? -eq 0 ]; then
   if [ $? -eq 0 ]; then
     for f in *.[jJ]*; do
       cwebp $f -resize 0 120 -q 50 -short -o .thumb/${f%.*}.webp;
+      convert $f -resize 120x120\> -quality 50 .thumb/${f%.*}.jpg;
     done
   else
     echo $(date) Failure creating thumbs: user: $(echo $USER) >> scripts/log.txt
