@@ -19,7 +19,7 @@ function get_images($photo_dir, $album, $image_blacklist) {
   if ($supported_format === 'webp') {
     $all_images = glob($photo_dir."/$album"."/*.{webp,WEBP}", GLOB_BRACE);
   } else {
-    $all_images = glob($photo_dir."/$album"."/*.{jpg,JPG}", GLOB_BRACE);    
+    $all_images = glob($photo_dir."/$album"."/*.{jpg,JPG}", GLOB_BRACE);
   }
   foreach($all_images as $image) {
     if (!in_array($album.'/'.basename($image), $image_blacklist)) {
