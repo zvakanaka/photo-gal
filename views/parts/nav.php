@@ -1,6 +1,7 @@
 <nav>
     <?php $action = (isset($action)) ? $action : filter_input(INPUT_GET, 'action'); ?>
-      <a class="logo" href="/">howtoterminal<span class="blue">$</span><span class="lime">&gt;</span><span class="blink">_</span></a>
+      <img class="logo" src="<?php echo $project_dir.'/img/photo-gal.jpg'?>">
+      <!-- <a class="logo" href="/">howtoterminal<span class="blue">$</span><span class="lime">&gt;</span><span class="blink">_</span></a> -->
       <?php
       $menu = array("Albums" => "home");
 

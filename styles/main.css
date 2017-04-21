@@ -174,7 +174,12 @@ main {
  padding-bottom: 35px;
 }
 
-.logo { color: lime; }
+.logo {
+  padding-top: 0;
+  height: 34px;
+  transform: translateY(-9px);
+  float: left;
+}
 .blue { color: #35C; }
 .lime { color: lime; }
 .blink {
@@ -191,11 +196,13 @@ main {
 
   .logo {
     line-height: 31px;
+    height: 100%;
   }
 
   .nav-a {
     padding-top: 8px;
     padding-bottom: 4px;
+    font-size: x-large;
   }
 
   main, .singularity {

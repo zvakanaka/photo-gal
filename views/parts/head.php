@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <style media="screen">
+      html {
+        background-color: #3c3c3c;
+      }
+    </style>
     <?php $action = (isset($action)) ? $action : filter_input(INPUT_GET, 'action'); ?>
     <title> <?php echo ucfirst($action); ?> | howtoterminal</title>
     <meta name="description" content="Photo Gallery">
@@ -8,7 +13,7 @@
     <meta name="author" content="Adam Quinton">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php if ($action === 'album') { ?>
-      <link rel="manifest" href="<?php echo "$_SERVER['DOCUMENT_ROOT'].$project_dir./manifest_json/?album=$album";?>">
+      <link rel="manifest" href="<?php echo "/".$project_dir."/manifest_json/?album=$album";?>">
     <?php } else { ?>
       <link rel="manifest" href="/manifest_json/default.json">
     <?php } ?>
