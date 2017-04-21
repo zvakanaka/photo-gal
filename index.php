@@ -6,6 +6,7 @@ require('model/user_db.php');
 require('model/photo_fs.php');
 require('lib/exec.php');
 require('lib/string_tools.php');
+require('lib/get_supported_format.php');
 
 session_start();
 
