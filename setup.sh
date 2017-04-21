@@ -1,5 +1,5 @@
 #!/bin/bash
-cat banner.txt
+cat banner-color.txt
 echo
 
 if [ ! -f setup.sh ]; then
