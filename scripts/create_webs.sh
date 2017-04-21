@@ -13,4 +13,5 @@ echo $(date) Creating webs for $1 from $3 >> scripts/log.txt
 cd $photo_dir/$1 && mkdir .web;
 for f in *.[jJ]*; do
   cwebp $f -resize 0 1024 -q 70 -short -o .web/${f%.*}.webp;
+  convert $f -resize 1024x1024\> -quality 70 .web/${f%.*}.jpg;
 done

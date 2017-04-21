@@ -5,7 +5,7 @@
 <?php foreach ($albums as $album) { ?>
   <div class="album-thumb">
     <a class="thumb-link" href="?action=album&amp;album=<?php echo $album;?>">
-      <img class="album-img" src="<?php echo "$photo_dir/$album/.album/thumb.webp"; ?>" alt="Album thumb for <?php echo $album;?>"/>
+      <img class="album-img" src="<?php echo "$photo_dir/$album/.album/thumb.$supported_format"; ?>" alt="Album thumb for <?php echo $album;?>"/>
     </a>
     <div class="album-desc">
       <?php echo ucfirst($album); ?>

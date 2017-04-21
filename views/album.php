@@ -3,12 +3,12 @@
 <main>
   <h1><?php echo ucfirst($album);?></h1>
 <?php foreach ($images as $image) { ?>
-    <a class="thumb-link" id="thumb-<?php echo strip_ext($image).".webp";?>" href="javascript:void(0)"
-        onClick="getAndShow('<?php echo "$photo_dir/$album/.web/".strip_ext($image).".webp"; ?>',
-                            '<?php echo "$photo_dir/$album/.thumb/".strip_ext($image).".webp"; ?>',
+    <a class="thumb-link" id="thumb-<?php echo strip_ext($image).".".$supported_format;?>" href="javascript:void(0)"
+        onClick="getAndShow('<?php echo "$photo_dir/$album/.web/".strip_ext($image).".".$supported_format; ?>',
+                            '<?php echo "$photo_dir/$album/.thumb/".strip_ext($image).".".$supported_format; ?>',
                             '<?php echo "$photo_dir/$album/$image"; ?>',
                             '<?php echo $album; ?>')">
-      <img class="thumb" src="<?php echo "$photo_dir/$album/.thumb/".strip_ext($image).".webp";?>" alt="<?php echo "Thumbnail of ".$image;?>"/>
+      <img class="thumb" src="<?php echo "$photo_dir/$album/.thumb/".strip_ext($image).".".$supported_format;?>" alt="<?php echo "Thumbnail of ".$image;?>"/>
     </a>
 <?php } ?>
 
