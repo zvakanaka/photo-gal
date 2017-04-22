@@ -28,4 +28,14 @@ function get_images($photo_dir, $album, $image_blacklist) {
   }
   return $images;
 }
+
+function get_num_images($photo_dir, $album) {
+  // get total number of full-size, web, and thumbnail images
+  $fullsize_images = count(glob($photo_dir."/$album"."/*.{jpg,JPG}", GLOB_BRACE));
+  $webp_webs = count(glob($photo_dir."/$album/.web"."/*.{webp,WEBP}", GLOB_BRACE));
+  $jpg_webs = count(glob($photo_dir."/$album/.web"."/*.{jpg,JPG}", GLOB_BRACE));
+  $jpg_thumbs = count(glob($photo_dir."/$album/.thumb"."/*.{jpg,JPG}", GLOB_BRACE));
+  $webp_thumbs = count(glob($photo_dir."/$album/.thumb"."/*.{jpg,JPG}", GLOB_BRACE));
+  return $fullsize_images + $webp_webs + $webp_thumbs + $jpg_webs + $jpg_thumbs;
+}
 ?>
