@@ -2,6 +2,7 @@
 Photo manager and gallery made of Vanilla JS, Bash scripts, and PHP
 
 # DSLR 🔌 Raspberry-Pi 📡 Web-Server
+![Screenshot](https://github.com/zvakanaka/photo-gal/raw/img/photo-gal.png)  
 ## Usage
 1. Plug DSLR into Raspberry-Pi (or any computer with this set up)
 2. Open web browser and go to the ip-address/photo-gal
