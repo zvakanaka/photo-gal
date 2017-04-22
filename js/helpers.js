@@ -154,7 +154,6 @@ downloadBtn.addEventListener('click', function processDownloadForm() {
     .then(function(response2) {
       console.log(response2);
       interval.id = setInterval(getDownloadProgress, 2000);
-      console.log('INTERVAL ID', id);
     }).catch(function(err) {
       console.error(err);
     });
@@ -167,7 +166,7 @@ downloadBtn.addEventListener('click', function processDownloadForm() {
       console.log(response);
       numImages = response['numImages'];
       let computedPercentage = (numImages/totalNumImages)*100;
-      console.log(numImages + 'total '+totalNumImages+' percentage: '+computedPercentage);
+      console.log(numImages + '/'+totalNumImages+' percentage: '+computedPercentage);
       if (computedPercentage === 100) {
         width = 100;
         progressBarProgress.style.width = '100%';
@@ -182,19 +181,24 @@ downloadBtn.addEventListener('click', function processDownloadForm() {
       console.error(err);
     });
   }
-
-
-
-  //
-  // var id = setInterval(frame, 10);
-  // function frame() {
-  //   if (width >= 100) {
-  //     clearInterval(id);
-  //   } else {
-  //     width++;
-  //     progressBarProgress.style.width = width + '%';
-  //     progressBarProgress.innerHTML = width * 1  + '%';
-  //   }
-  // }
-
 });
+
+// save and load the server upload form (localStorage)
+let uploadForm = document.querySelector('div#upload-to-server');
+let saveUploadFormBtn = uploadForm.querySelector('#save-server-details');
+let serverName = uploadForm.querySelector('#domain-name');
+let username = uploadForm.querySelector('#user-name');
+let port = uploadForm.querySelector('#port-number');
+saveUploadFormBtn.addEventListener('click', e => {
+  localStorage.setItem('serverName', serverName.value);
+  localStorage.setItem('username', username.value);
+  localStorage.setItem('port', port.value);
+});
+let storedServerName = localStorage.getItem('serverName');
+let storedUsername = localStorage.getItem('username');
+let storedPort = localStorage.getItem('port');
+serverName.value = storedServerName;
+username.value = storedUsername;
+port.value = storedPort;
+
+let uploadBtn = uploadForm.querySelector('#upload');
