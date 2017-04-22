@@ -1,0 +1,18 @@
+img[big] {
+filter: blur(3px);
+}
+
+img.loaded[big] {
+  -webkit-animation: blur 0.25s linear forwards;
+  -moz-animation: blur 0.25s linear forwards;
+  -ms-animation: blur 0.25s linear forwards;
+  -o-animation: blur 0.25s linear forwards;
+  animation: blur 0.25s linear forwards;
+}
+@keyframes blur {
+  to {
+    -webkit-filter: blur(0px);
+    -moz-filter: blur(0px);
+    filter: blur(0px);
+  }
+}
