@@ -21,7 +21,7 @@ if [ ! -f config.php ]; then
     echo "WARNING: This does not seem to be a Debian based OS, please configure dependencies manually"
   else
     echo "Make sure these are installed:"
-    echo -e '\n\t sudo apt install mysql-common mysql-server php-common php-mysql webp gphoto2 rsync zip\n'
+    echo -e '\n\t sudo apt install mysql-common mysql-server php-common php-mysql webp imagemagick gphoto2 rsync zip\n'
     echo "If you are using apache, install these too:"
     echo -e '\n\t sudo apt install apache2 libapache2-mod-php\n'
   fi
