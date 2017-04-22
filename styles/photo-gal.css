@@ -1,0 +1,85 @@
+body {
+  font-family: "Courier New";
+  color: #1f7;
+  background-color: black !important;
+  margin: 0;
+}
+.spacer {
+  height: 2em;
+}
+.spacer-big {
+  height: 4em;
+}
+div.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+input.nice {
+  background: 0;
+  border: 0;
+  border-bottom: 3px solid #c71;
+  color: white;
+  font-weight: 500;
+  outline: 0;
+  text-align: center;
+  font-size: 120%;
+  line-height: 120%;
+  width: 13em;
+}
+button.nice {
+  background-color: #1c6;
+  border-radius: 4px;
+  border: 1px solid rgb(24, 171, 41);
+  display: inline-block;
+  cursor: pointer;
+  color: rgb(255, 255, 255);
+  font-family: "Courier New";
+  font-size: 20px;
+  padding: 17px 32px;
+  text-decoration: none;
+  text-shadow: rgb(47, 102, 39) -1px 2px 1px;
+}
+select.nice {
+  background: 0;
+  border: 0;
+  border-bottom: 3px solid #c71;
+  color: white;
+  background-color: black;
+  font-weight: 500;
+  outline: 0;
+  text-align: center;
+  font-size: 120%;
+  line-height: 120%;
+  width: 13em;
+}
+
+div.nice.progress-bar {
+  width: 20%;
+  background-color: #999;
+}
+
+div.nice.progress-bar-progress {
+font-family: "Courier New";
+  width: 10%;
+  height: 30px;
+  background-color: #4f5;
+  text-align: center;
+  line-height: 30px;
+  color: black;
+}
+.hidden {
+  display: none;
+}
+/* input validation */
+.input-error-message {
+  color: #f46;
+}
+
+div#upload-to-server input {
+  text-align: left;
+}
+input#port-number {
+  width: 3em;
+}

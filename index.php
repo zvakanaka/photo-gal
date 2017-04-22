@@ -7,8 +7,7 @@ require('model/photo_fs.php');
 require('lib/exec.php');
 require('lib/string_tools.php');
 require('lib/get_supported_format.php');
-
-session_start();
+require('lib/stats.php');
 
 $action = filter_input(INPUT_POST, 'action');
 if ($action == NULL) {
@@ -17,6 +16,9 @@ if ($action == NULL) {
     $action = 'home';
   }
 }
+
+session_start();
+require('api.php');
 
 if ($action == 'register') {
   include('views/login-register.php');
@@ -199,13 +201,22 @@ if ($action == 'register') {
     include('views/dslr.php');
     die();
   } else {
+    $num_images_on_camera = getStat('images');
     $cmd = 'bash scripts/download_and_process.sh '.escapeshellarg($new_album).' '.escapeshellarg($photo_dir);
     shell_async($cmd);
   }
   $albums = get_albums($photo_dir, array());
-  $message = "Breathe in. Breathe out. Repeat until photos are downloaded to ".$new_album.".";
+  // $message = "Downloading $num_images_on_camera images to ".$new_album.".";
+  $message = "$num_images_on_camera";
   include('views/dslr.php');
   die();
+} else if ($action == 'download_upload') {
+  if (!isset($_SESSION["is_admin"])) {// authenticate
+    $error = "Sorry, only administrators can do these things.";
+    include('views/dslr.php');
+    die();
+  }
+  include('views/download-upload.php');
 } else if ($action == 'optimize') {
   if (!isset($_SESSION["is_admin"])) {// authenticate
     $error = "Sorry, only administrators can do these things.";

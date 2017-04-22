@@ -74,4 +74,9 @@
     </form>
 </main>
 <script src="js/dslr.js"></script>
+<?php if (isset($message) && isset($num_images_on_camera)) { ?>
+  <script type="text/javascript">
+    updateNumImagesProgress('<?php echo $new_album;?>', '<?php echo $num_images_on_camera;?>');
+  </script>
+<?php } ?>
 <?php include $_SERVER['DOCUMENT_ROOT'].$project_dir.'/views/parts/toes.php'; ?>
