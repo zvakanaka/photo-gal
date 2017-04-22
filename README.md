@@ -19,7 +19,7 @@ $ bash setup.sh
 
 ---
 ## Local Development
-[Sng](https://www.npmjs.com/package/sng) can be used to serve PHP from somewhere in your home folder. Nginx, PHP,  and MySQL are required. Sng requires npm, the neatest way to install that is with [nvm](nvm.sh) (Node Version Manager).
+[Sng](https://www.npmjs.com/package/sng) can be used to serve PHP from somewhere in your home folder. Nginx, PHP, and MySQL are required. Sng requires npm, the neatest way to install that is with [nvm](nvm.sh) (Node Version Manager).
 
 1. Place a file named `.sng.conf` in the parent directory of the project. Place these contents in `.sng.conf`:  
 ```
