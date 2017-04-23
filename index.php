@@ -170,6 +170,17 @@ if ($action == 'register') {
     die();
   }
   include('views/dslr.php');
+} else if ($action == 'process_all_albums') {
+  if (!isset($_SESSION["is_admin"])) {// authenticate
+    $error = "Sorry, only administrators can do these things.";
+    include('views/dslr.php');
+    die();
+  }
+  $message = "You should probably go outside and skateboard or something.";
+  $cmd = 'bash scripts/process_all_albums.sh '.escapeshellarg($photo_dir);
+  shell_async($cmd);
+  include('views/dslr.php');
+  die();
 } else if ($action == 'download_from_dslr') {
   if (!isset($_SESSION["is_admin"])) {// authenticate
     $error = "Sorry, only administrators can do these things.";
@@ -216,6 +227,7 @@ if ($action == 'register') {
     include('views/dslr.php');
     die();
   }
+  $albums = get_albums($photo_dir, array());
   include('views/download-upload.php');
 } else if ($action == 'optimize') {
   if (!isset($_SESSION["is_admin"])) {// authenticate

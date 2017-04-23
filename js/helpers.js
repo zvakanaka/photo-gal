@@ -201,4 +201,52 @@ serverName.value = storedServerName;
 username.value = storedUsername;
 port.value = storedPort;
 
+
 let uploadBtn = uploadForm.querySelector('#upload');
+uploadBtn.addEventListener('click', function() {
+  let uploadData = {
+    'album_name': document.querySelector('#album-select').value,
+    'server_name': serverName.value,
+    'username': username.value,
+    'port': port.value
+  };
+  console.log(uploadData);
+  let albumName = document.querySelector('#album-select').value;
+  getJSON('/photo-gal?action=upload_to_server&album_name='+albumName
+    +'&server_name='+serverName.value
+    +'&username='+username.value
+    +'&port='+port.value)
+  .then(function (response) {
+    let responseText;
+    let uploadMessage = document.querySelector('div#upload-message');
+    uploadMessage.classList.remove('hidden');
+    if (response.error) {
+      responseText = response.error;
+    } else {
+      responseText = response.status;
+    }
+    uploadMessage.querySelector('p').innerHTML = responseText;
+  });
+});
+
+let processBtn = document.querySelector('#process');
+processBtn.addEventListener('click', function() {
+  var text;
+  var favDrink = prompt("Generating thumbs and webs for all albums takes like an eon, are you sure?", "no");
+  switch(favDrink) {
+      case "yes":
+        text = "yes";
+        break;
+      case "YES":
+        text = "yes";
+        break;
+      case "Yes":
+        text = "yes";
+        break;
+      default:
+        text = "nope";
+  }
+  if (text === 'yes') {
+    window.location.href = "?action=process_all_albums";
+  }
+});

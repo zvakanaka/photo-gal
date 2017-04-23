@@ -13,9 +13,9 @@
     <meta name="author" content="Adam Quinton">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php if ($action === 'album') { ?>
-      <link rel="manifest" href="<?php echo "/".$project_dir."/manifest_json/?album=$album";?>">
+      <link rel="manifest" href="<?php echo $_SERVER['HTTP_HOST'].$project_dir."/manifest_json/?album=$album";?>">
     <?php } else { ?>
-      <link rel="manifest" href="/manifest_json/default.json">
+      <link rel="manifest" href="<?php echo $_SERVER['HTTP_HOST'].$project_dir."/manifest_json/default.json";?>">
     <?php } ?>
   </head>
   <body>

@@ -7,7 +7,8 @@
 
       if (isset($_SESSION["is_admin"])) {
         $menu["Users"] = "users";
-        $menu["DSLR"] = "dslr";
+        // $menu["DSLR"] = "dslr";
+        $menu["DSLR"] = "download_upload";
       }
       if (isset($_SESSION["logged_in"])) {
         $menu["Faves"] = "review_favorites&user_id=".$_SESSION['user_id'];
