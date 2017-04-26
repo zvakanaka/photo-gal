@@ -52,5 +52,17 @@ if ($action == 'download_progress') {
     echo json_encode($arr);
     die();
   }
+} else if ($action == 'exif_read') {
+  $album = filter_input(INPUT_GET, 'album', FILTER_SANITIZE_STRING);
+  $file = filter_input(INPUT_GET, 'file', FILTER_SANITIZE_STRING);
+  if ($file == NULL || $file == FALSE ||
+      $album == NULL || $album == FALSE) {
+    $arr = array ('error'=>'Missing one or more parameters');
+    echo json_encode($arr);
+    die();
+  }
+  $arr = get_exif($photo_dir, $album, $file);
+  echo json_encode($arr);
+  die();
 }
 ?>
