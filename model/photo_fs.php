@@ -38,4 +38,17 @@ function get_num_images($photo_dir, $album) {
   $webp_thumbs = count(glob($photo_dir."/$album/.thumb"."/*.{jpg,JPG}", GLOB_BRACE));
   return $fullsize_images + $webp_webs + $webp_thumbs + $jpg_webs + $jpg_thumbs;
 }
+
+function get_exif($photo_dir, $album, $filename) {
+  $exif = exif_read_data("$photo_dir/$album/$filename", 'IFD0');
+  if ($exif === false) {
+    return false;
+  }
+  $exif = exif_read_data("$photo_dir/$album/$filename", 0, true);
+  foreach ($exif as $key => $section) {
+      foreach ($section as $name => $val) {
+      }
+  }
+  return $exif;
+}
 ?>
