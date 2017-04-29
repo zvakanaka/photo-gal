@@ -8,8 +8,8 @@
       "type": "image/webp"
     }
   ],
-  "theme_color": "#4286f4",
-  "background_color": "#4286f4",
+  "theme_color": "#000",
+  "background_color": "#000",
   "display": "fullscreen",
   "start_url": "/photo-gal/?action=album&album=<?php echo $album;?>",
   "orientation": "landscape"
