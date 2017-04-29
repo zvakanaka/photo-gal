@@ -11,6 +11,6 @@
   "theme_color": "#4286f4",
   "background_color": "#4286f4",
   "display": "fullscreen",
-  "start_url": "/?action=album&album=<?php echo $album;?>",
+  "start_url": "/photo-gal/?action=album&album=<?php echo $album;?>",
   "orientation": "landscape"
 }
