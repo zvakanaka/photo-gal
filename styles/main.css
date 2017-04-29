@@ -1,11 +1,11 @@
-body {
+/*body {
   font-family: "Courier New", Courier New, sans-serif;
   background-color: #3c3c3c;
   margin: 0;
   padding: 0;
   position: relative;
   min-height: 100vh;
-}
+}*/
 
 nav, footer {
   width: 100%;
@@ -35,22 +35,22 @@ nav a.on, nav a:hover {
 }
 
 h1, h2, h3, h4, h5, h6, pre {
-  padding: 4px;
+  /*padding: 4px;
 	border-radius: 6px;
 	padding-left: 10px;
 	box-shadow: inset #333 0px 0px 8px;
 	color: rgb(135, 241, 135);
-	background-color: #2D2D2D;
+	background-color: #2D2D2D;*/
 }
 
 form, article {
   padding: 20px 20px;
   box-shadow: 1px 3px 8px rgba(0,0,0,0.5);
-  background-color: #ccc;
+  /*background-color: #ccc;*/
 }
 
 table form {
-  background-color: #000;
+  /*background-color: #000;*/
   padding: 0px;
 }
 
@@ -122,17 +122,18 @@ footer a {
 }
 
 img.thumb {
-  border: 1px solid black;
+  /*border: 1px solid black;*/
   box-shadow: 1px 3px 8px rgba(0,0,0,0.5);
 }
 
 div.album-thumb {
-  border: 1px solid black;
-  box-shadow: 1px 3px 8px rgba(0,0,0,0.5);
-  background-color: #ddd;
-  margin: 5px;
-  float: left;
-  width: 180px;
+  /*border: 1px solid black;*/
+  /*box-shadow: 1px 3px 8px rgba(0,0,0,0.5);*/
+  /*background-color: #ddd;*/
+  /*margin: 5px;*/
+  /*float: left;*/
+  /*width: 180px;*/
+  color: #1f7;
 }
 
 div.album-thumb:hover, img.thumb:hover {
@@ -189,7 +190,133 @@ main {
   50% { opacity: 0; }
 }
 
-@media screen and (max-aspect-ratio: 3/2) {
+/* GOOD STUFF */
+@import url('https://fonts.googleapis.com/css?family=Space+Mono');
+
+body {
+  font-family: "Space Mono", "Courier New";
+  color: #1f7;
+  background-color: black;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  min-height: 100vh;
+}
+
+.spacer {
+  height: 2em;
+}
+.spacer-big {
+  height: 4em;
+}
+.center, h2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+input.nice {
+  background: 0;
+  border: 0;
+  border-bottom: 3px solid #c71;
+  color: white;
+  font-weight: 500;
+  font-family: "Space Mono", "Courier New";
+  outline: 0;
+  text-align: center;
+  font-size: 120%;
+  line-height: 120%;
+  width: 13em;
+  margin: 0 1.5em 1em 0;
+}
+button.nice {
+  background-color: #1c6;
+  border-radius: 4px;
+  border: 1px solid rgb(24, 171, 41);
+  display: inline-block;
+  cursor: pointer;
+  color: rgb(255, 255, 255);
+  font-family: "Space Mono", "Courier New";
+  font-size: 20px;
+  padding: 17px 32px;
+  text-decoration: none;
+  text-shadow: rgb(47, 102, 39) -1px 2px 1px;
+  margin: 0 0 .5em 1em;
+}
+select.nice {
+  background: 0;
+  border: 0;
+  border-bottom: 3px solid #c71;
+  color: white;
+  background-color: black;
+  font-weight: 500;
+  outline: 0;
+  text-align: center;
+  font-size: 120%;
+  line-height: 120%;
+  width: 13em;
+  font-family: "Space Mono", "Courier New";
+  margin-bottom: .5em;
+}
+
+div.nice.progress-bar {
+  width: 20%;
+  border: 1px solid #4f5;
+}
+
+div.nice.progress-bar-progress {
+font-family: "Space Mono", "Courier New";
+  width: 10%;
+  height: 30px;
+  background-color: #4d5;
+  text-align: center;
+  line-height: 30px;
+  color: black;
+}
+.hidden {
+  display: none;
+}
+/* input validation */
+.input-error-message {
+  color: #f46;
+}
+
+div#upload-to-server input {
+  text-align: left;
+}
+input#port-number {
+  width: 3em;
+}
+div.wrap {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+}
+h2 {
+  margin-top: 3em;
+}
+
+/* gallery */
+.gal {
+  /*font-size: 0;*/
+  flex-flow: row wrap;
+  display: flex;
+}
+.gal div {
+  flex: auto;
+  width: 200px;
+  margin: 0.5vw;
+}
+.gal div img {
+  width: 100%;
+  height: auto;
+  /*max-width: 250px;*/
+}
+
+/* END GOOD STUFF */
+
+/*@media screen and (max-aspect-ratio: 3/2) {
   nav {
     height: 54px;
   }
@@ -241,4 +368,4 @@ main {
     float: left;
     width: 94%;
   }
-}
+}*/

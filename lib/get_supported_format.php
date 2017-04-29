@@ -10,6 +10,4 @@ function get_supported_format() {
   }
   return "jpg";
 }
-
-$supported_format = get_supported_format();
 ?>

@@ -2,29 +2,30 @@
 
 <main>
 <h1>Albums</h1>
+<div class="gal">
+
 <?php foreach ($albums as $album) { ?>
   <div class="album-thumb">
     <a class="thumb-link" href="?action=album&amp;album=<?php echo $album;?>">
-      <img class="album-img" src="<?php echo "$photo_dir/$album/.album/thumb.$supported_format"; ?>" alt="Album thumb for <?php echo $album;?>"/>
+      <img class="album-img" src="<?php echo "$photo_dir/$album/.album/thumb.".$SUPPORTED_FORMAT; ?>" alt="Album thumb for <?php echo $album;?>"/>
     </a>
     <div class="album-desc">
       <?php echo ucfirst($album); ?>
     </div>
   </div>
 <?php } ?>
+</div>
 
+</main>
 <?php if (isset($_SESSION['is_admin'])) { ?>
-<?php
+  <?php
   if (filter_input(INPUT_GET, "hidden") == NULL) { ?>
     <div class="singularity">
       <a href="?action=home&hidden=true">Show Hidden Albums</a>
-    </div>
+    </div><br>
     <?php } else { ?>
       <div class="singularity">
         <a href="?action=home">Hide Hidden Albums</a>
-      </div>
-<?php }} ?>
-</main>
-
-
+      </div><br>
+      <?php }} ?>
 <?php include $_SERVER['DOCUMENT_ROOT'].$project_dir.'/views/parts/toes.php'; ?>
