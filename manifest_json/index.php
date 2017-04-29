@@ -1,6 +1,6 @@
 <?php $album = filter_input(INPUT_GET, "album", FILTER_SANITIZE_STRING);?>{
   "name": "Photos of <?php echo $album;?>",
-  "short_name": "<?php echo $album;?>",
+  "short_name": "<?php echo ucfirst($album);?>",
   "icons": [
     {
       "src": "/photo/<?php echo $album;?>/.thumb/icon.webp",
