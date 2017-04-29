@@ -30,10 +30,10 @@ function getAndShow(webUrl, thumbUrl, fullsizeUrl, album) {
   document.getElementById('light').style.display = 'block';
   document.getElementById('fade').style.display = 'block';
   // set up last photo view properly
-  var nextPhotoEl = document.getElementById(`thumb-${img}`).nextElementSibling;
+  var nextPhotoEl = document.getElementById(`thumb-${img}`).parentNode.nextElementSibling.children[0];
   var nextPhoto;
   if (nextPhotoEl === null) { // get previous image if no next image
-    nextPhotoEl = document.getElementById(`thumb-${img}`).previousElementSibling;
+    nextPhotoEl = document.getElementById(`thumb-${img}`).parentNode.previousElementSibling.children[0];
   }
   nextPhoto = nextPhotoEl.id.substr(6);
   document.getElementById('delete-photo').setAttribute('href', `?action=delete_photo&album_name=${album}&photo_name=${fullsizeEnd}&next_photo=${nextPhoto}`);
@@ -89,9 +89,9 @@ document.onkeydown = function(e) {
 function changePhoto(img, way) {
   var nextPhoto;
   if (way == "next") {
-    nextPhoto = document.getElementById(`thumb-${img}`).nextElementSibling;
+    nextPhoto = document.getElementById(`thumb-${img}`).parentNode.nextElementSibling.children[0];
   } else {
-    nextPhoto = document.getElementById(`thumb-${img}`).previousElementSibling;
+    nextPhoto = document.getElementById(`thumb-${img}`).parentNode.previousElementSibling.children[0];
   }
   if (nextPhoto !== null) {
     nextPhoto.click();

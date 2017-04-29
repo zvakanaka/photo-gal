@@ -1,16 +1,22 @@
+@import url('https://fonts.googleapis.com/css?family=Space+Mono');
+
 body {
-  font-family: "Courier New";
+  font-family: "Space Mono", "Courier New";
   color: #1f7;
-  background-color: black !important;
+  background-color: black;
   margin: 0;
+  padding: 0;
+  position: relative;
+  min-height: 100vh;
 }
+
 .spacer {
   height: 2em;
 }
 .spacer-big {
   height: 4em;
 }
-div.center {
+.center, h2 {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -22,11 +28,13 @@ input.nice {
   border-bottom: 3px solid #c71;
   color: white;
   font-weight: 500;
+  font-family: "Space Mono", "Courier New";
   outline: 0;
   text-align: center;
   font-size: 120%;
   line-height: 120%;
   width: 13em;
+  margin: 0 1.5em 1em 0;
 }
 button.nice {
   background-color: #1c6;
@@ -35,11 +43,12 @@ button.nice {
   display: inline-block;
   cursor: pointer;
   color: rgb(255, 255, 255);
-  font-family: "Courier New";
+  font-family: "Space Mono", "Courier New";
   font-size: 20px;
   padding: 17px 32px;
   text-decoration: none;
   text-shadow: rgb(47, 102, 39) -1px 2px 1px;
+  margin: 0 0 .5em 1em;
 }
 select.nice {
   background: 0;
@@ -53,18 +62,20 @@ select.nice {
   font-size: 120%;
   line-height: 120%;
   width: 13em;
+  font-family: "Space Mono", "Courier New";
+  margin-bottom: .5em;
 }
 
 div.nice.progress-bar {
   width: 20%;
-  background-color: #999;
+  border: 1px solid #4f5;
 }
 
 div.nice.progress-bar-progress {
-font-family: "Courier New";
+font-family: "Space Mono", "Courier New";
   width: 10%;
   height: 30px;
-  background-color: #4f5;
+  background-color: #4d5;
   text-align: center;
   line-height: 30px;
   color: black;
@@ -82,4 +93,30 @@ div#upload-to-server input {
 }
 input#port-number {
   width: 3em;
+}
+div.wrap {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+}
+h2 {
+  margin-top: 3em;
+}
+
+/* gallery */
+.gal {
+  /*font-size: 0;*/
+  flex-flow: row wrap;
+  display: flex;
+}
+.gal div {
+  flex: auto;
+  width: 200px;
+  margin: 0.5vw;
+}
+.gal div img {
+  width: 100%;
+  height: auto;
+  /*max-width: 250px;*/
 }

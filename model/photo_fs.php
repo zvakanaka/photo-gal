@@ -1,5 +1,4 @@
 <?php
-
 function get_albums($photo_dir, $album_blacklist) {
   $albums = array();
   if ($handle = opendir($photo_dir)) {
@@ -16,7 +15,7 @@ function get_albums($photo_dir, $album_blacklist) {
 
 function get_images($photo_dir, $album, $image_blacklist) {
   $images = array();
-  if ($supported_format === 'webp') {
+  if ($SUPPORTED_FORMAT === 'webp') {
     $all_images = glob($photo_dir."/$album"."/*.{webp,WEBP}", GLOB_BRACE);
   } else {
     $all_images = glob($photo_dir."/$album"."/*.{jpg,JPG}", GLOB_BRACE);
