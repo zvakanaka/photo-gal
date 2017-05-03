@@ -45,7 +45,8 @@ sudo cp /home/trusted_user/.ssh/* /var/www/.ssh/
 ```
 # Optional
 
-[Https](http://nginx.org/en/docs/http/configuring_https_servers.html) for Nginx   
+[Https (SSL)](https://www.digitalocean.com/community/tutorials/how-to-create-an-ssl-certificate-on-nginx-for-ubuntu-14-04) for Nginx   
+[Redirect HTTP to HTTPS](https://www.digitalocean.com/community/questions/http-https-redirect-positive-ssl-on-nginx) for Nginx
 
 Disable root login  
 ```sh
