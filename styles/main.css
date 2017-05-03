@@ -215,7 +215,7 @@ body {
   align-items: center;
   justify-content: center;
 }
-input.nice {
+input {
   background: 0;
   border: 0;
   border-bottom: 3px solid #c71;
@@ -229,7 +229,7 @@ input.nice {
   width: 13em;
   margin: 0 1.5em 1em 0;
 }
-button.nice {
+button {
   background-color: #1c6;
   border-radius: 4px;
   border: 1px solid rgb(24, 171, 41);
@@ -243,7 +243,7 @@ button.nice {
   text-shadow: rgb(47, 102, 39) -1px 2px 1px;
   margin: 0 0 .5em 1em;
 }
-select.nice {
+select {
   background: 0;
   border: 0;
   border-bottom: 3px solid #c71;
@@ -259,12 +259,12 @@ select.nice {
   margin-bottom: .5em;
 }
 
-div.nice.progress-bar {
+div.progress-bar {
   width: 20%;
   border: 1px solid #4f5;
 }
 
-div.nice.progress-bar-progress {
+div.progress-bar-progress {
 font-family: "Space Mono", "Courier New";
   width: 10%;
   height: 30px;
