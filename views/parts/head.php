@@ -3,7 +3,7 @@
   <head>
     <style media="screen">
       html {
-        background-color: #3c3c3c;
+        background-color: #000;
       }
     </style>
     <?php $action = (isset($action)) ? $action : filter_input(INPUT_GET, 'action'); ?>
