@@ -20,6 +20,7 @@ nav {
 }
 
 .nav-a, .logo {
+  display: inline;
   color: #00ff47;
   padding-top: 10px;
   padding-right: 16px;

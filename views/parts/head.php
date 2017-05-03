@@ -5,6 +5,9 @@
       html {
         background-color: #000;
       }
+      .logo {
+        display: none;
+      }
     </style>
     <?php $action = (isset($action)) ? $action : filter_input(INPUT_GET, 'action'); ?>
     <title> <?php echo ucfirst($action); ?> | howtoterminal</title>
