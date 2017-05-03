@@ -55,11 +55,9 @@ if ($action == 'register') {
   $password = filter_input(INPUT_POST, 'new-password', FILTER_SANITIZE_STRING);
   $confirm_password = filter_input(INPUT_POST, 'confirm-new-password', FILTER_SANITIZE_STRING);
   if ($username == NULL || $username == FALSE ||
-          $firstname == NULL || $firstname == FALSE ||
-          $lastname == NULL || $lastname == FALSE ||
-          $password == NULL || $password == FALSE ||
-          $confirm_password == NULL || $confirm_password == FALSE ||
-          $email == NULL || $email == FALSE) {
+      $password == NULL || $password == FALSE ||
+      $confirm_password == NULL || $confirm_password == FALSE ||
+      $email == NULL || $email == FALSE) {
       $error = "Invalid user data. Check all fields and try again.";
       include('views/login-register.php');
       die();
@@ -68,7 +66,7 @@ if ($action == 'register') {
     include('views/login-register.php');
     die();
   } else {
-    if (insert_user($firstname, $lastname, $username, $password, $email) == TRUE) {
+    if (insert_user('', '', $username, $password, $email) == TRUE) {
       $_SESSION["logged_in"] = $username;
       $user_id = get_user_id($username);
       $_SESSION["user_id"] = $user_id;

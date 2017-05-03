@@ -1,6 +1,5 @@
 <?php include $_SERVER['DOCUMENT_ROOT'].$project_dir.'/views/parts/head.php'; ?>
 <main>
-  <div class="spacer"></div>
   <h2>Download from DSLR</h2>
   <div class="center wrap" id="download-album">
     <label>Album Name:
@@ -16,7 +15,7 @@
     </div>
   </div>
 
-      <h2>Upload to Another Server</h2>
+  <h2>Upload to Another Server</h2>
   <div class="center wrap" id="upload-to-server">
       <label for="">Domain:
         <input type="text" class="nice" id="domain-name"/>

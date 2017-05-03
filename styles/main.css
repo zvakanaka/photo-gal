@@ -136,6 +136,9 @@ div.album-thumb {
   color: #1f7;
 }
 
+div.album-thumb, img.thumb {
+  border: 1px solid #000;
+}
 div.album-thumb:hover, img.thumb:hover {
   border: 1px solid #ccc;
 }
@@ -229,7 +232,7 @@ input {
   width: 13em;
   margin: 0 1.5em 1em 0;
 }
-button {
+button, input[type="submit"] {
   background-color: #1c6;
   border-radius: 4px;
   border: 1px solid rgb(24, 171, 41);
@@ -258,7 +261,9 @@ select {
   font-family: "Space Mono", "Courier New";
   margin-bottom: .5em;
 }
-
+.constrictor {
+  max-width: 750px;
+}
 div.progress-bar {
   width: 20%;
   border: 1px solid #4f5;
