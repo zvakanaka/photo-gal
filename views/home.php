@@ -7,7 +7,11 @@
 <?php foreach ($albums as $album) { ?>
   <div class="album-thumb">
     <a class="thumb-link" href="?action=album&amp;album=<?php echo $album;?>">
-      <img class="album-img" src="<?php echo "$photo_dir/$album/.album/thumb.".$SUPPORTED_FORMAT; ?>" alt="Album thumb for <?php echo $album;?>"/>
+      <!-- TODO: BIG thumbs -->
+      <img class="album-img"
+        data-fullsize="<?php echo "$photo_dir/$album/.album/thumb_big.".$SUPPORTED_FORMAT; ?>"
+        src="<?php echo "$photo_dir/$album/.album/thumb.".$SUPPORTED_FORMAT; ?>"
+        alt="Album thumb for <?php echo $album;?>"/>
     </a>
     <div class="album-desc">
       <?php echo ucfirst($album); ?>
