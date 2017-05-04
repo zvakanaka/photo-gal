@@ -1,4 +1,3 @@
-// Adam Quinton ©️
 function detectIE() {
   var ua = window.navigator.userAgent;
   var ie = ua.search(/(MSIE|Trident|Edge)/);
@@ -7,22 +6,21 @@ function detectIE() {
 var isIE = detectIE();
 if (isIE) {
   (function(d, script) {
-    script = d.createElement('script');
-    script.type = 'text/javascript';
+    script = d.createElement("script");
+    script.type = "text/javascript";
     script.async = true;
-    script.onload = function(){
+    script.onload = function() {
       pageLoad();
     };
-    script.src = 'ie11-polyfills.js';
-    d.getElementsByTagName('head')[0].appendChild(script);
-  }(document));
+    script.src = "ie11.js";
+    d.getElementsByTagName("head")[0].appendChild(script);
+  })(document);
 } else {
   pageLoad();
 }
 function pageLoad() {
   var isChrome = !!window.chrome && !!window.chrome.webstore;
   function evhandler(evt) {
-    //console.log(evt);
     let path;
     let hasPath = evt.path || (evt.composedPath && evt.composedPath());
     if (hasPath) {
@@ -34,18 +32,19 @@ function pageLoad() {
     } else {
       path = evt.target;
     }
-    if (path.hasAttribute('big') && !Array.from(path.classList).includes('done-loading')) {
-      loadImage(path.getAttribute('big')).then(
-        function(img) {
-          path.classList.add('done-loading');
-          path.src = img.src;
-          setTimeout(function waitASmallBit() {
-            path.classList.add('loaded');
-            img = null;//eslint-disable-line
-            evt = null;//eslint-disable-line
-          }, 50);// TODO: only set timeout on firefox
-        }
-      );
+    if (
+      path.hasAttribute("data-fullsize") &&
+      !Array.from(path.classList).includes("done-loading")
+    ) {
+      loadImage(path.dataset.fullsize).then(function(img) {
+        path.classList.add("done-loading");
+        path.src = img.src;
+        setTimeout(function waitASmallBit() {
+          path.classList.add("loaded");
+          img = null; //eslint-disable-line
+          evt = null; //eslint-disable-line
+        }, 50); // TODO: only set timeout on firefox
+      });
     }
   }
 
@@ -58,9 +57,9 @@ function pageLoad() {
       img.src = url;
     });
   }
-  let imgs = Array.from(document.querySelectorAll('img'));
+  let imgs = Array.from(document.querySelectorAll("img"));
   imgs.forEach(function(img) {
-    img.addEventListener('load', function(e) {
+    img.addEventListener("load", function(e) {
       evhandler(e);
     });
   });
