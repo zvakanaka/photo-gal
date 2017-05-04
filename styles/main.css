@@ -304,6 +304,7 @@ h2 {
 }
 
 /* gallery */
+/* THANKS Christopher Scmeider!: http://codepen.io/ckschmieder/pen/RWLqRB */
 .gal {
   /*font-size: 0;*/
   flex-flow: row wrap;
