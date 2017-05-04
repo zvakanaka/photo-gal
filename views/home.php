@@ -19,7 +19,7 @@
   </div>
 <?php } ?>
 </div>
-
+<script src="js/little-big-img.js"></script>
 </main>
 <?php if (isset($_SESSION['is_admin'])) { ?>
   <?php
