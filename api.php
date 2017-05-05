@@ -1,4 +1,9 @@
 <?php
+
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS');
+header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token');
+
 if ($action == 'download_progress') {
   $album = filter_input(INPUT_GET, 'album', FILTER_SANITIZE_STRING);
   $arr = array ('numImages'=>get_num_images($photo_dir, $album), 'album'=>$album);
