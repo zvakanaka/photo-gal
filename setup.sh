@@ -21,7 +21,7 @@ if [ ! -f config.php ]; then
     echo "WARNING: This does not seem to be a Debian based OS, please configure dependencies manually"
   else
     echo "Make sure these are installed:"
-    echo -e '\n\t sudo apt install mysql-common mysql-server php-common php-mysql webp imagemagick gphoto2 rsync zip\n'
+    echo -e '\n\t sudo apt install mysql-common mysql-server php5-common php5-mysql webp imagemagick gphoto2 rsync zip\n'
     echo "If you are using apache, install these too:"
     echo -e '\n\t sudo apt install apache2 libapache2-mod-php\n'
   fi
@@ -38,6 +38,14 @@ if [ ! -f config.php ]; then
     echo -e '\nEmpty db password not allowed'
     exit 2
   fi
+
+  echo -n "MySQL root password: "
+  read -s root_db_password
+  if [ -z $root_db_password ]; then
+    echo -e '\nEmpty db password not allowed'
+    exit 2
+  fi
+
   echo -e "<?php
 return (object) array(
   'photo_dir' => '$photo_dir',
@@ -58,21 +66,20 @@ return (object) array(
   read create_db_and_user
   if [[ $create_db_and_user =~ [yY](es)* ]]; then
     echo "Executing command as MySQL root user"
-    mysql -u root -p -e "source model/setup.sql"
-    model/setup.sql
+    mysql -u root -p$root_db_password -e "source model/setup.sql"
   fi
   echo -n "Would you like to (re)create the photo db? [y/N]: "
   read recreate_db
   if [[ $recreate_db =~ [yY](es)* ]]; then
     echo "Executing command as MySQL root user"
-    mysql -u root -p -e "source model/photo-gal.sql"
+    mysql -u root -p$root_db_password -e "source model/photo-gal.sql"
   fi
 
   if [[ $? -eq 0 ]]; then
     echo "Successfully set up database."
     echo "If you would like to do the next step, go create a normal user first (from a browser)"
     HOSTNAME=$(hostname -I)
-    echo -n "\thttp://$HOSTNAME/photo-gal"
+    echo -e "\thttp://$HOSTNAME/photo-gal"
   fi
   echo
   echo -n "Would you like to make a user an admin? [y/N]: "
@@ -81,7 +88,7 @@ return (object) array(
     echo -n "Existing username that shall be made an admin? : "
     read username
     echo "Executing command as MySQL root user"
-    mysql -uroot -p -e "UPDATE users SET is_admin = 1 WHERE user_id = (SELECT user_d FROM users WHERE username = '$username');"
+    mysql -uroot -p$root_db_password -e "UPDATE users SET is_admin = 1 WHERE user_id = (SELECT user_d FROM users WHERE username = '$username');"
   fi
 
   if [ ! -d $photo_dir ]; then
@@ -106,7 +113,8 @@ else
   if [[ $start_over =~ [yY](es)* ]]; then
     rm ./config.php
     create_sql_setup
-    echo "Reset complete. Re-run to create a new configuration."
+    echo "Reset complete. Re-running to create a new configuration..."
+    bash setup.sh
   else
     echo "okay, bye"
   fi
