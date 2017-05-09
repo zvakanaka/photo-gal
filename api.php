@@ -69,5 +69,23 @@ if ($action == 'download_progress') {
   $arr = get_exif($photo_dir, $album, $file);
   echo json_encode($arr);
   die();
+} else if ($action == 'album_names') {
+  $album_blacklist = array();
+  $hidden_albums = get_hidden_albums();
+  foreach ($hidden_albums as $album) {
+    $album_blacklist[] = $album['album_name'];
+  }
+  if (isset($_SESSION["is_admin"])) {// authenticate
+    $show_hidden = filter_input(INPUT_GET, 'hidden', FILTER_SANITIZE_STRING);
+  } else {
+    $show_hidden = 'false';
+  }
+  if ($show_hidden == 'true') {
+    $albums = get_albums($photo_dir, array());
+  } else {
+    $albums = get_albums($photo_dir, $album_blacklist);
+  }
+  echo json_encode($albums);
+  die();
 }
 ?>
