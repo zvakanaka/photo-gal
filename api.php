@@ -43,7 +43,6 @@ if ($action == 'download_progress') {
   $server_name = filter_input(INPUT_GET, 'server_name', FILTER_SANITIZE_STRING);
   $album_name = filter_input(INPUT_GET, 'album_name', FILTER_SANITIZE_STRING);
   $port = filter_input(INPUT_GET, 'port', FILTER_VALIDATE_INT);
-  error_log("$username $server_name $album_name");
   if ($username == NULL || $username == FALSE ||
       $server_name == NULL || $server_name == FALSE ||
       $album_name == NULL || $album_name == FALSE) {
@@ -80,12 +79,44 @@ if ($action == 'download_progress') {
   } else {
     $show_hidden = 'false';
   }
+  $albums = array();
   if ($show_hidden == 'true') {
     $albums = get_albums($photo_dir, array());
   } else {
     $albums = get_albums($photo_dir, $album_blacklist);
   }
   echo json_encode($albums);
+  die();
+} else if ($action == 'pictures_in_album') {
+  $album = filter_input(INPUT_GET, 'album', FILTER_SANITIZE_STRING);
+  if ($album == NULL) {
+    $error = "No album. Try again.";
+    $arr = array ('error'=>$error, 'album'=>$new_album);
+    echo json_encode($arr);
+    die();
+  }
+  $image_blacklist = array();
+  $hidden_images = get_hidden_images();
+  foreach ($hidden_images as $image) {
+    $image_blacklist[] = $image['image_name'];
+  }
+  $hidden_albums = get_hidden_albums();
+  $album_blacklist = array();
+  foreach ($hidden_albums as $hidden_album) {
+    $album_blacklist[] = $hidden_album['album_name'];
+  }
+  if (in_array($album, $album_blacklist)) {
+    $is_hidden = true;
+  }
+  $show_hidden = filter_input(INPUT_GET, 'hidden', FILTER_SANITIZE_STRING);
+  $images = array();
+  if ($show_hidden == 'true') {
+    $images = get_images($photo_dir, $album, array());
+  } else {
+    $images = get_images($photo_dir, $album, $image_blacklist);
+  }
+  $arr = array ('isHidden'=>$is_hidden, 'images'=>$images);
+  echo json_encode($arr);
   die();
 }
 ?>
